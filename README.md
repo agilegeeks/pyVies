@@ -17,7 +17,7 @@ from pyVies import api
 
 try:
     vies = api.Vies()
-    result = vies.request('2785503', 'RO')
+    result = vies.request('RO2785503', 'RO', extended_info=True)
 
     # works as well
     # result = vies.request('RO2785503')
@@ -31,9 +31,11 @@ except api.ViesError as e:
     print (e)
 else:
     print (result)
+    print (result.vatNumber)
+    print(result.valid)
 
 
-# You may also use "clean" to extract vat number and country code
+# You may also use clean to extract vat number and country code
 # The line bellow would print ('2785503', 'RO')
 
 print (vies.clean('RO2785503'))

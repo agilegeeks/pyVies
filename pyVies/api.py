@@ -111,7 +111,7 @@ class Vies(object):
 
         return vat_number,vat_country_code
 
-    def request(self, vat_number, vat_country_code=None):
+    def request(self, vat_number, vat_country_code=None, extended_info=False):
         result = None
 
         vat_number,vat_country_code = self.clean(vat_number,vat_country_code)
@@ -123,9 +123,13 @@ class Vies(object):
             raise ViesHTTPError('VIES service unreachable. %s' % str(e))
 
         try:
-            result = client.service.checkVat(vat_country_code, vat_number)
+            if extended_info is True:
+                result = client.service.checkVatApprox(vat_country_code, vat_number)
+            else:
+                result = client.service.checkVat(vat_country_code, vat_number)
         except Exception as e:
             raise ViesError('Got error from vies: %s' % str(e))
+
 
         return result
 
