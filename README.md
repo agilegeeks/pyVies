@@ -6,7 +6,7 @@ Has been tested on 2.7, 3.4 and 3.6
 
 ## Installation
 
-    $ pip install pyVies
+    $ pip install pyvieser
 
 ## Usage
 
@@ -32,10 +32,10 @@ except api.ViesError as e:
 else:
     print (result)
 
-"""
-You may also use `clean` to extract vat number and country code
-The line bellow would print ('2785503', 'RO')
-"""
+
+# You may also use "clean" to extract vat number and country code
+# The line bellow would print ('2785503', 'RO')
+
 print (vies.clean('RO2785503'))
 
 ```
