@@ -111,7 +111,7 @@ class Vies(object):
 
         return vat_number,vat_country_code
 
-    def request(self, vat_number, vat_country_code=None, extended_info=False):
+    def request(self, vat_number, vat_country_code=None, extended_info=True):
         result = None
 
         vat_number,vat_country_code = self.clean(vat_number,vat_country_code)
