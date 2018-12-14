@@ -12,7 +12,7 @@ setuptools.setup(
     description="A wrapper API of VIES VAT web service",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/agilegeeks/pyVies.git",
+    url="https://github.com/agilegeeks/pyVies",
     packages=setuptools.find_packages(exclude=['tests']),
     entry_points={
         "console_scripts": [
