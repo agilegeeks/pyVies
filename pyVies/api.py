@@ -5,6 +5,7 @@ import sys
 import zeep
 import pprint
 
+# source: https://ec.europa.eu/taxation_customs/vies/faqvies.do#item_11
 VAT_NUMBER_REGEXPS = {
     'AT': re.compile(r'^U\d{8}$', re.IGNORECASE),
     'BE': re.compile(r'^\d{9,10}$'),
@@ -14,16 +15,14 @@ VAT_NUMBER_REGEXPS = {
     'DE': re.compile(r'^\d{9}$'),
     'DK': re.compile(r'^\d{8}$'),
     'EE': re.compile(r'^\d{9}$'),
+    'EL': re.compile(r'^\d{9}$'),
     'ES': re.compile(r'^[\da-z]\d{7}[\da-z]$', re.IGNORECASE),
     'FI': re.compile(r'^\d{8}$'),
     'FR': re.compile(r'^[\da-hj-np-z]{2}\d{9}$', re.IGNORECASE),
-    'GB': re.compile(r'^((\d{9})|(\d{12})|(GD\d{3})|(HA\d{3}))$',
-                     re.IGNORECASE),
-    'GR': re.compile(r'^\d{9}$'),
+    'GB': re.compile(r'^((\d{9})|(\d{12})|(GD\d{3})|(HA\d{3}))$', re.IGNORECASE),
     'HR': re.compile(r'^\d{11}$'),
     'HU': re.compile(r'^\d{8}$'),
-    'IE': re.compile(r'^((\d{7}[a-z])|(\d[a-z]\d{5}[a-z])|(\d{6,7}[a-z]{2}))$',
-                     re.IGNORECASE),
+    'IE': re.compile(r'^((\d{7}[a-z])|(\d[a-z]\d{5}[a-z])|(\d{6,7}[a-z]{2}))$', re.IGNORECASE),
     'IT': re.compile(r'^\d{11}$'),
     'LT': re.compile(r'^((\d{9})|(\d{12}))$'),
     'LU': re.compile(r'^\d{8}$'),
