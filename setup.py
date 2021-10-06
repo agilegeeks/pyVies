@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyvieser",
-    version="0.0.3",
+    version="0.0.4",
     author="Radu Boncea",
     author_email="radu.boncea@gmail.com",
     description="A wrapper API of VIES VAT web service",
