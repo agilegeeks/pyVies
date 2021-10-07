@@ -1,0 +1,46 @@
+name: Publish to PyPI
+
+on:
+    push:
+        branches: [master]
+
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Prepare repo
+              uses: actions/checkout@v2
+            - name: Setup Python
+              uses: actions/setup-python@v1
+              with:
+                  python-version: 3.9
+            - name: Install pypa/build
+              run: >-
+                  python -m
+                  pip install
+                  build
+                  --user
+
+            - name: Build a binary wheel and a source tarball
+              run: >-
+                  python -m
+                  build
+                  --sdist
+                  --wheel
+                  --outdir dist/
+                  .
+            #       - name: Publish distribution 📦 to Test PyPI
+            #         uses: pypa/gh-action-pypi-publish@master
+            #         with:
+            #           skip_existing: true
+            #           password: ${{ secrets.TEST_PIP_API_TOKEN }}
+            #           repository_url: https://test.pypi.org/legacy/
+
+            - name: Publish distribution 📦 to PyPI
+              if: ${{ startsWith(github.ref, 'refs/tags') }}
+              uses: pypa/gh-action-pypi-publish@master
+              with:
+                  password: ${{ secrets.PIP_API_TOKEN }}
