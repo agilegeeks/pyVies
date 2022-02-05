@@ -92,8 +92,8 @@ class Vies(object):
                 raise ViesValidationError('Invalid VAT number provided')
 
             vat_country_code = vat_country_code.upper()
-            if vat_country_code== 'EL':
-                vat_country_code = 'GR'
+            if vat_country_code == 'GR':
+                vat_country_code = 'EL'
             else:
                 vat_number = vat_number[2:]
 
